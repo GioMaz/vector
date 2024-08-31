@@ -20,11 +20,16 @@
 
 #define v_append(_v, _item) \
     do { \
+        v_increase(_v); \
+        (_v).items[(_v).size++] = _item; \
+    } while (0);
+
+#define v_increase(_v) \
+    do { \
         if ((_v).size == (_v).capacity) { \
             (_v).items = realloc((_v).items, ((_v).capacity * EXP_FACTOR) * sizeof(*(_v).items)); \
             (_v).capacity = (_v).capacity * EXP_FACTOR; \
         } \
-        (_v).items[(_v).size++] = _item; \
     } while (0);
 
 #endif
