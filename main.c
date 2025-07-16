@@ -2,7 +2,7 @@
 #include "vector.h"
 
 typedef struct {
-    size_t size;
+    size_t count;
     size_t capacity;
     int64_t *items;
 } Vector;
@@ -18,8 +18,8 @@ void test(Vector v)
     v_append(v, 6);
     v_append(v, 7);
     v_append(v, 8);
-    for (size_t i = 0; i < v.size; i++) {
-        printf("%lld\n", v.items[i]);
+    for (size_t i = 0; i < v.count; i++) {
+        printf("%ld\n", v.items[i]);
     }
     free(v.items);
 }
@@ -35,8 +35,8 @@ void test_pointer(Vector *v)
     v_append(*v, 6);
     v_append(*v, 7);
     v_append(*v, 8);
-    for (size_t i = 0; i < v->size; i++) {
-        printf("%lld\n", v->items[i]);
+    for (size_t i = 0; i < v->count; i++) {
+        printf("%ld\n", v->items[i]);
     }
     free(v->items);
 }
